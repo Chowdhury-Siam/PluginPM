@@ -149,44 +149,6 @@ if Config.BOT_USERNAME and tbot:
                     parse_mode="HTML",
                 )
 
-        elif event.query.user_id in auth and query == "pm_warn":
-            CSTM_PMP = gvarstat("CUSTOM_PMPERMIT") or None
-            HELL_FIRST = f"🔥 𝙃𝙚𝙡𝙡𝘽𝙤𝙩 𝙋𝙈 𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮 🔥\n\nHello!! This is an automated message on behalf of {hell_mention}."
-            if CSTM_PMP:
-                HELL_FIRST += f"\n\n{CSTM_PMP}"
-            a = gvarstat("PMPERMIT_PIC")
-            pic_list = []
-            if a and a == "DISABLE":
-                PIC = None
-            elif a:
-                b = a.split(" ")
-                if len(b) >= 1:
-                    for c in b:
-                        pic_list.append(c)
-                PIC = random.choice(pic_list)
-            else:
-                PIC = "https://te.legra.ph/file/58df4d86400922aa32acd.jpg"
-            if PIC and PIC.endswith((".jpg", ".png")):
-                result = await event.client.send_file(
-                    file=PIC,
-                    text=HELL_FIRST,
-                    title="Hellbot PM Permit",
-                    parse_mode="HTML",
-                )
-            elif PIC:
-                result = await event.client.send_file(
-                    file=PIC,
-                    text=HELL_FIRST,
-                    title="Hellbot PM Permit",
-                    parse_mode="HTML",
-                )
-            else:
-                result = await event.client.send_file(
-                    file=PIC,
-                    text=HELL_FIRST,
-                    title="Hellbot PM Permit",
-                    parse_mode="HTML",
-                )
                 
         elif event.query.user_id in auth and query == "repo":
             result = builder.article(
@@ -219,59 +181,6 @@ if Config.BOT_USERNAME and tbot:
             )
         await event.answer([result] if result else None)
 
-
-    @tbot.on(CallbackQuery(data=compile(b"pmclick")))
-    async def on_pm_click(event):
-        auth = await clients_list()
-        if event.query.user_id in auth:
-            reply_popup = "This is for Other Users..."
-        else:
-            reply_popup = "🔰 This is Hêllẞø† PM Security to keep away unwanted retards from spamming PM !!"
-        await event.answer(reply_popup, cache_time=0, alert=True)
-
-    @tbot.on(CallbackQuery(data=compile(b"req")))
-    async def on_pm_click(event):
-        auth = await clients_list()
-        if event.query.user_id in auth:
-            await event.answer("This is for other users!", cache_time=0, alert=True)
-        else:
-            await event.edit(
-                "✅ **Request Registered** \n\nMy master will now decide to look for your request or not.\n😐 Till then wait patiently and don't spam!!"
-            )
-            target = await event.client(GetFullUserRequest(event.query.user_id))
-            first_name = html.escape(target.users[0].first_name)
-            if first_name is not None:
-                first_name = first_name.replace("\u2060", "")
-            await tbot.send_message(
-                Config.LOGGER_ID,
-                f"#PM_REQUEST \n\n⚜️ You got a PM request from [{first_name}](tg://user?id={event.query.user_id}) !",
-            )
-
-    @tbot.on(CallbackQuery(data=compile(b"heheboi")))
-    async def on_pm_click(event):
-        auth = await clients_list()
-        if event.query.user_id in auth:
-            await event.answer("This is for other users!", cache_time=0, alert=True)
-        else:
-            await event.edit(f"As you wish. **BLOCKED !!**")
-            if bot:
-                await bot(functions.contacts.BlockRequest(event.query.user_id))
-            if H2:
-                await H2(functions.contacts.BlockRequest(event.query.user_id))
-            if H3:
-                await H3(functions.contacts.BlockRequest(event.query.user_id))
-            if H4:
-                await H4(functions.contacts.BlockRequest(event.query.user_id))
-            if H5:
-                await H5(functions.contacts.BlockRequest(event.query.user_id))
-            target = await event.client(GetFullUserRequest(event.query.user_id))
-            first_name = html.escape(target.users[0].first_name)
-            if first_name is not None:
-                first_name = first_name.replace("\u2060", "")
-            await tbot.send_message(
-                Config.LOGGER_ID,
-                f"#BLOCK \n\n**Blocked** [{first_name}](tg://user?id={event.query.user_id}) \nReason:- PM Self Block",
-            )
 
     @tbot.on(CallbackQuery(data=compile(b"reopen")))
     async def reopn(event):
