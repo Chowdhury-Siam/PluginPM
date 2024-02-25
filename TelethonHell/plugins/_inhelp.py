@@ -167,24 +167,27 @@ if Config.BOT_USERNAME and tbot:
             else:
                 PIC = "https://te.legra.ph/file/58df4d86400922aa32acd.jpg"
             if PIC and PIC.endswith((".jpg", ".png")):
-                result = builder.article(
+                result = await event.client.send_file(
+                    file=PIC,
                     text=HELL_FIRST,
                     title="Hellbot PM Permit",
-                    link_preview=False,
+                    parse_mode="HTML",
                 )
             elif PIC:
-                result = builder.article(
+                result = await event.client.send_file(
+                    file=PIC,
                     text=HELL_FIRST,
                     title="Hellbot PM Permit",
-                    link_preview=False,
+                    parse_mode="HTML",
                 )
             else:
-                result = builder.article(
+                result = await event.client.send_file(
+                    file=PIC,
                     text=HELL_FIRST,
                     title="Hellbot PM Permit",
-                    link_preview=False,
+                    parse_mode="HTML",
                 )
-
+                
         elif event.query.user_id in auth and query == "repo":
             result = builder.article(
                 title="Repository",
