@@ -167,14 +167,13 @@ if Config.BOT_USERNAME and tbot:
             else:
                 PIC = "https://te.legra.ph/file/58df4d86400922aa32acd.jpg"
             if PIC and PIC.endswith((".jpg", ".png")):
-                result = builder.photo(
-                    file=PIC,
+                result = builder.article(
                     text=HELL_FIRST,
+                    title="Hellbot PM Permit",
                     link_preview=False,
                 )
             elif PIC:
-                result = builder.document(
-                    file=PIC,
+                result = builder.article(
                     text=HELL_FIRST,
                     title="Hellbot PM Permit",
                     link_preview=False,
