@@ -170,11 +170,6 @@ if Config.BOT_USERNAME and tbot:
                 result = builder.photo(
                     file=PIC,
                     text=HELL_FIRST,
-                    buttons=[
-                        [Button.inline("📝 Request Approval", data="req")],
-                        [Button.inline("🚫 Block", data="heheboi")],
-                        [Button.inline("❓ Curious", data="pmclick")],
-                    ],
                     link_preview=False,
                 )
             elif PIC:
@@ -182,22 +177,12 @@ if Config.BOT_USERNAME and tbot:
                     file=PIC,
                     text=HELL_FIRST,
                     title="Hellbot PM Permit",
-                    buttons=[
-                        [Button.inline("📝 Request Approval", data="req")],
-                        [Button.inline("🚫 Block", data="heheboi")],
-                        [Button.inline("❓ Curious", data="pmclick")],
-                    ],
                     link_preview=False,
                 )
             else:
                 result = builder.article(
                     text=HELL_FIRST,
                     title="Hellbot PM Permit",
-                    buttons=[
-                        [Button.inline("📝 Request Approval", data="req")],
-                        [Button.inline("🚫 Block", data="heheboi")],
-                        [Button.inline("❓ Curious", data="pmclick")],
-                    ],
                     link_preview=False,
                 )
 
